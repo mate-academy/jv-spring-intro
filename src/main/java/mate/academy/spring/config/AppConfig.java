@@ -23,7 +23,7 @@ public class AppConfig {
     }
 
     @Bean
-    DataSource getDataSource() {
+    public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(environment.getProperty("db.driver"));
         dataSource.setUrl(environment.getProperty("db.url"));
@@ -33,7 +33,7 @@ public class AppConfig {
     }
 
     @Bean
-    LocalSessionFactoryBean getSessionFactory() {
+    public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(getDataSource());
 

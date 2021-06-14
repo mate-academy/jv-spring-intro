@@ -17,6 +17,6 @@ public class Main {
         UserService userService = context.getBean(UserService.class);
         userService.add(firstUser);
         userService.add(secondUser);
-        System.out.println(userService.listUsers());
+        System.out.println(userService.getAllUsers());
     }
 }

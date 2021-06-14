@@ -39,7 +39,7 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public List<User> listUsers() {
+    public List<User> getAllUsers() {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from User", User.class)
                     .getResultList();
