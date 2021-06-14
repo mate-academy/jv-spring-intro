@@ -2,6 +2,7 @@ package mate.academy.spring.dao.impl;
 
 import java.util.List;
 import mate.academy.spring.dao.UserDao;
+import mate.academy.spring.lib.DataProcessingException;
 import mate.academy.spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,7 +33,7 @@ public class UserDaoImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can not save user to db. User - " + user, e);
+            throw new DataProcessingException("Can not save user to db. User - " + user, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -45,7 +46,7 @@ public class UserDaoImpl implements UserDao {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from User", User.class).getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can not get all users from DB.", e);
+            throw new DataProcessingException("Can not get all users from DB.", e);
         }
     }
 }
