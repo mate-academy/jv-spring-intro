@@ -39,6 +39,7 @@ public class ApplicationConfig {
         Properties dbProperties = new Properties();
         dbProperties.put("show_sql", environment.getProperty("show_sql"));
         dbProperties.put("hibernate.hbm2ddl.auto", environment.getProperty("hbm2ddl.auto"));
+        sessionFactory.setHibernateProperties(dbProperties);
         sessionFactory.setPackagesToScan("mate.academy.spring.model");
         return sessionFactory;
     }
