@@ -16,6 +16,6 @@ public class Main {
         userService.add(john);
         userService.add(peter);
         userService.add(samuel);
-        userService.listUsers().forEach(System.out::println);
+        userService.getAllUsers().forEach(System.out::println);
     }
 }

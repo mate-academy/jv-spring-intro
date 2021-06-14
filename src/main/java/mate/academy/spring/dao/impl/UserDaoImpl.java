@@ -42,7 +42,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> listUsers() {
+    public List<User> getAllUsers() {
         try (Session session = sessionFactory.openSession()) {
             CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder()
                     .createQuery(User.class);

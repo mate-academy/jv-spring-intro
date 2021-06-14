@@ -22,7 +22,7 @@ public class UserServiceService implements UserService {
     }
 
     @Override
-    public List<User> listUsers() {
-        return userDao.listUsers();
+    public List<User> getAllUsers() {
+        return userDao.getAllUsers();
     }
 }
