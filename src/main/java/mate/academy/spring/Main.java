@@ -21,6 +21,6 @@ public class Main {
         userDao.add(alice);
         userDao.add(bob);
         userDao.listUsers().forEach(System.out::println);
-        context.close();
+        //context.close();
     }
 }
