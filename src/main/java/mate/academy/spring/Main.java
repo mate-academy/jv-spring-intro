@@ -15,6 +15,5 @@ public class Main {
         UserService userService = context.getBean(UserService.class);
         userService.add(user);
         userService.getAllUsers().forEach(System.out::println);
-
     }
 }
