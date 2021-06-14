@@ -6,6 +6,9 @@ import mate.academy.spring.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
+    private static final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+            AppConfig.class);
+    
     public static void main(String[] args) {
         User ben = new User();
         ben.setEmail("ben@gmail.com");
@@ -14,9 +17,6 @@ public class Main {
         User alex = new User();
         alex.setEmail("alex@gmail.com");
         alex.setPassword("654321");
-        
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-                AppConfig.class);
         
         UserService userService = context.getBean(UserService.class);
         userService.add(ben);
