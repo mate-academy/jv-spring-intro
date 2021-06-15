@@ -12,10 +12,10 @@ public class Main {
     public static void main(String[] args) {
         UserService userService = context.getBean(UserService.class);
 
-        User bob = new User(2L,"bob@gmail.com", "bobsPassword");
+        User bob = new User("bob@gmail.com", "bobsPassword");
         userService.add(bob);
 
-        User alice = new User(1L,"alice@gmail.com", "alicePassword");
+        User alice = new User("alice@gmail.com", "alicePassword");
         userService.add(alice);
 
         userService.listUsers().forEach(System.out::println);
