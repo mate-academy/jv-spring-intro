@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         UserService userService = context.getBean(UserService.class);
 
-        User bob = new User("bob@gmail.com", "bobsPassword");
+        User bob = new User("bob1@gmail.com", "bobsPassword");
         userService.add(bob);
 
         User alice = new User("alice@gmail.com", "alicePassword");
