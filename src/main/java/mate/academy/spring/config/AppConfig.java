@@ -43,5 +43,4 @@ public class AppConfig {
         localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
         return localSessionFactoryBean;
     }
-
 }
