@@ -21,5 +21,3 @@ public class Main {
         userService.listUsers().forEach(System.out::println);
     }
 }
-
-
