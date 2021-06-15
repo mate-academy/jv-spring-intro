@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-    private final SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Autowired
     public UserDaoImpl(SessionFactory sessionFactory) {
