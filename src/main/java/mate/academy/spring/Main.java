@@ -17,5 +17,4 @@ public class Main {
         userService.listUsers()
                 .forEach(user -> System.out.println(user.getId() + " - " + user.getEmail()));
     }
-
 }

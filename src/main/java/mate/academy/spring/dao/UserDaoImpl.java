@@ -43,10 +43,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> listUsers() {
         try (Session session = sessionFactory.openSession()) {
-            CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder()
-                    .createQuery(User.class);
-            criteriaQuery.from(User.class);
-            return session.createQuery(criteriaQuery).getResultList();
+            return session.createQuery("FROM User", User.class).getResultList();
         } catch (Exception e) {
             throw new DataProcessingException("Can't get all users from DB", e);
         }
