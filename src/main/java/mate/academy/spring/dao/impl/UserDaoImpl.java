@@ -2,6 +2,7 @@ package mate.academy.spring.dao.impl;
 
 import java.util.List;
 import mate.academy.spring.dao.UserDao;
+import mate.academy.spring.lib.DataProcessingException;
 import mate.academy.spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,7 +32,7 @@ public class UserDaoImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert to DB user: "
+            throw new DataProcessingException("Can't insert to DB user: "
                     + user, e);
         } finally {
             if (session != null) {
@@ -45,7 +46,7 @@ public class UserDaoImpl implements UserDao {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM User").getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can't get list of users from DB", e);
+            throw new DataProcessingException("Can't get list of users from DB", e);
         }
     }
 }
