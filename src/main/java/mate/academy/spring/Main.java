@@ -8,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
         User user1 = new User();
-        user1.setEmail("asdasdas");
+        user1.setEmail("user1");
         user1.setPassword("qwerty");
         User user2 = new User();
         user2.setEmail("user2");
