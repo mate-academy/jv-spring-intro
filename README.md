@@ -1,7 +1,7 @@
 # Spring Framework intro
 
 - Implement UserService and UserDao
-  
+
     ```java
       public interface UserService {
           void add(User user);
@@ -21,4 +21,5 @@
     - Difference between @Bean and @Autowired and @Qualifier
     - What does each annotation used in videos mean?
 
-__You can check yourself using this__ [checklist](https://mate-academy.github.io/jv-program-common-mistakes/java-spring/intro/java-spring-intro)
+__You can check yourself using
+this__ [checklist](https://mate-academy.github.io/jv-program-common-mistakes/java-spring/intro/java-spring-intro)
