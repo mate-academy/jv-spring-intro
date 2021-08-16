@@ -7,5 +7,4 @@ public interface UserDao {
     User add(User user);
 
     List<User> getAll();
-
 }
