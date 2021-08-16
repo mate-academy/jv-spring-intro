@@ -2,13 +2,16 @@ package mate.academy.spring.service.impl;
 
 import java.util.List;
 import mate.academy.spring.dao.UserDao;
-import mate.academy.spring.dao.impl.UserDaoImpl;
 import mate.academy.spring.model.User;
 import mate.academy.spring.service.UserService;
 import mate.academy.spring.util.HashUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
-    private UserDao userDao = new UserDaoImpl();
+    @Autowired
+    private UserDao userDao;
 
     @Override
     public void add(User user) {
