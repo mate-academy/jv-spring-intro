@@ -12,25 +12,25 @@ public class Main {
     private static final UserService userService = context.getBean(UserService.class);
 
     public static void main(String[] args) {
-        User user = new User();
-        user.setLogin("kuruch1004@gmail.com");
-        user.setPassword("password".toCharArray());
+        User danile = new User();
+        danile.setLogin("danile@gmail.com");
+        danile.setPassword("password".toCharArray());
 
-        User user1 = new User();
-        user1.setLogin("kuruch@gmail.com");
-        user1.setPassword("password123".toCharArray());
+        User kuruch = new User();
+        kuruch.setLogin("kuruch@gmail.com");
+        kuruch.setPassword("password123".toCharArray());
 
-        User user2 = new User();
-        user2.setLogin("kuruch10@gmail.com");
-        user2.setPassword("password_qwerty".toCharArray());
+        User danile_kuruch = new User();
+        danile_kuruch.setLogin("danile_kuruch@gmail.com");
+        danile_kuruch.setPassword("password_qwerty".toCharArray());
 
-        userService.add(user);
-        userService.add(user1);
-        userService.add(user2);
-        System.out.println(userService.findByEmail(user.getLogin()));
-        System.out.println(userService.findByEmail(user1.getLogin()));
-        System.out.println(userService.findByEmail(user2.getLogin()));
-        userService.delete(user);
+        userService.add(danile);
+        userService.add(kuruch);
+        userService.add(danile_kuruch);
+        System.out.println(userService.findByEmail(danile.getLogin()));
+        System.out.println(userService.findByEmail(kuruch.getLogin()));
+        System.out.println(userService.findByEmail(danile_kuruch.getLogin()));
+        userService.delete(danile);
         try {
             System.out.println(userService.getById(1L));
         } catch (NoSuchElementException e) {
