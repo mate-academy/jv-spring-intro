@@ -1,50 +1,26 @@
 package mate.academy.spring.service.impl;
 
 import java.util.List;
-import mate.academy.spring.exception.DataProcessingException;
+import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.model.User;
 import mate.academy.spring.service.UserService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserServiceImpl implements UserService {
-    private final SessionFactory sessionFactory;
+    private final UserDao userDao;
 
     @Autowired
-    public UserServiceImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
-    public User add(User user) {
-        Session session = null;
-        Transaction transaction = null;
-        try {
-            session = sessionFactory.openSession();
-            transaction = session.beginTransaction();
-            session.save(user);
-            transaction.commit();
-            return user;
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            throw new DataProcessingException("Can't save user: " + user + " to DB!", e);
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-        }
+    public void add(User user) {
+        userDao.add(user);
     }
 
     @Override
     public List<User> getAll() {
-        try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM User", User.class).getResultList();
-        } catch (Exception e) {
-            throw new DataProcessingException("Can't get users from DB!", e);
-        }
+        return userDao.getAll();
     }
 }
