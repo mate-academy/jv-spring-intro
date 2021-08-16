@@ -3,17 +3,17 @@ package mate.academy.spring.service.impl;
 import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.model.User;
 import mate.academy.spring.service.UserService;
-import mate.academy.spring.util.HashUtil;
+import mate.academy.spring.util.HashUtilImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
-    private final HashUtil hashUtil;
+    private final HashUtilImpl hashUtil;
 
     @Autowired
-    public UserServiceImpl(UserDao userDao,HashUtil hashUtil) {
+    public UserServiceImpl(UserDao userDao, HashUtilImpl hashUtil) {
         this.hashUtil = hashUtil;
         this.userDao = userDao;
     }

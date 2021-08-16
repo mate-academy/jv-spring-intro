@@ -1,4 +1,4 @@
-package mate.academy.spring.util.impl;
+package mate.academy.spring.util;
 
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -7,11 +7,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
-import mate.academy.spring.util.HashUtil;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HashUtilImpl implements HashUtil {
+public class HashUtilImpl {
     public static final String HASH_ALGORITHM = "SHA-512";
 
     public char[] hashPassword(char[] password, byte[] salt) {
