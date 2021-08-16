@@ -19,6 +19,5 @@ public class Main {
         service.add(alice);
         service.add(ben);
         System.out.println(service.getAll());
-
     }
 }
