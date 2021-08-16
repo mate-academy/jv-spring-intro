@@ -6,5 +6,5 @@ import mate.academy.spring.model.User;
 public interface UserDao {
     User save(User user);
 
-    List<User> getUsers();
+    List<User> getAll();
 }
