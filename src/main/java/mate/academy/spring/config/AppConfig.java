@@ -19,7 +19,7 @@ public class AppConfig {
     private Environment environment;
 
     @Bean
-    public DataSource getDataSourse() {
+    public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(environment.getProperty("db.driver"));
         dataSource.setUrl(environment.getProperty("db.url"));
@@ -31,7 +31,7 @@ public class AppConfig {
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
-        localSessionFactoryBean.setDataSource(getDataSourse());
+        localSessionFactoryBean.setDataSource(getDataSource());
         Properties properties = new Properties();
         properties.put("show_sql", environment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
