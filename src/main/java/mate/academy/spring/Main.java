@@ -11,17 +11,17 @@ public class Main {
             new AnnotationConfigApplicationContext(AppConfig.class);
 
     public static void main(String[] args) {
-        User user = new User();
-        user.setName("Ben");
-        user.setAge(19);
+        User ben = new User();
+        ben.setName("Ben");
+        ben.setAge(19);
 
-        User user1 = new User();
-        user1.setName("Not Ben");
-        user1.setAge(new Random().nextInt(100));
+        User notBen = new User();
+        notBen.setName("Not Ben");
+        notBen.setAge(new Random().nextInt(100));
 
         UserService userService = applicationContext.getBean(UserService.class);
-        userService.add(user);
-        userService.add(user1);
+        userService.add(ben);
+        userService.add(notBen);
 
         userService.getAll().forEach(System.out::println);
     }
