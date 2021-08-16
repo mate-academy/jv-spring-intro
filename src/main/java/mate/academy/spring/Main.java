@@ -10,13 +10,13 @@ public class Main {
             = new AnnotationConfigApplicationContext(AppConfig.class);
 
     public static void main(String[] args) {
-        User user1 = new User("Eugene", "Sinitsa");
-        User user2 = new User("Sinitsa", "Eugene");
+        User eugene = new User("Eugene", "Sinitsa");
+        User sinitsa = new User("Sinitsa", "Eugene");
 
         UserService userService = context.getBean(UserService.class);
 
-        userService.add(user1);
-        userService.add(user2);
+        userService.add(eugene);
+        userService.add(sinitsa);
 
         userService.getAll().forEach(System.out::println);
     }
