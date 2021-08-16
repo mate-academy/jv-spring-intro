@@ -3,6 +3,7 @@ package mate.academy.spring.config;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +15,9 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "mate.academy.spring")
 public class AppConfig {
-    private Environment environment;
+    private final Environment environment;
 
+    @Autowired
     public AppConfig(Environment environment) {
         this.environment = environment;
     }
@@ -36,8 +38,8 @@ public class AppConfig {
         localSessionFactoryBean.setDataSource(getDataSource());
 
         Properties properties = new Properties();
-        properties.put("show_sql", "true");
-        properties.put("hibernate.hbm2ddl.auto", "create-drop");
+        properties.put("show_sql", environment.getProperty("hibernate.show_sql"));
+        properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         localSessionFactoryBean.setHibernateProperties(properties);
 
         localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
