@@ -20,16 +20,16 @@ public class Main {
         kuruch.setLogin("kuruch@gmail.com");
         kuruch.setPassword("password123".toCharArray());
 
-        User danile_kuruch = new User();
-        danile_kuruch.setLogin("danile_kuruch@gmail.com");
-        danile_kuruch.setPassword("password_qwerty".toCharArray());
+        User danileKuruch = new User();
+        danileKuruch.setLogin("danile_kuruch@gmail.com");
+        danileKuruch.setPassword("password_qwerty".toCharArray());
 
         userService.add(danile);
         userService.add(kuruch);
-        userService.add(danile_kuruch);
+        userService.add(danileKuruch);
         System.out.println(userService.findByEmail(danile.getLogin()));
         System.out.println(userService.findByEmail(kuruch.getLogin()));
-        System.out.println(userService.findByEmail(danile_kuruch.getLogin()));
+        System.out.println(userService.findByEmail(danileKuruch.getLogin()));
         userService.delete(danile);
         try {
             System.out.println(userService.getById(1L));
