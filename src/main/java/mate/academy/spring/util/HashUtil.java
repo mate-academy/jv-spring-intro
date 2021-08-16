@@ -3,14 +3,16 @@ package mate.academy.spring.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HashUtil {
     public static final String HASH_ALGORITHM = "SHA-512";
 
     private HashUtil() {
     }
 
-    public static String hashPassword(String password, byte[] salt) {
+    public String hashPassword(String password, byte[] salt) {
         StringBuilder hashedPwd = new StringBuilder();
         try {
             MessageDigest messageDigest = MessageDigest.getInstance(HASH_ALGORITHM);
@@ -25,7 +27,7 @@ public class HashUtil {
         }
     }
 
-    public static byte[] getSalt() {
+    public byte[] getSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
         random.nextBytes(salt);
