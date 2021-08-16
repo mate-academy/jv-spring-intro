@@ -18,7 +18,6 @@ public class Main {
         service.add(bob);
         service.add(alice);
         service.add(ben);
-
         System.out.println(service.getAll());
 
     }
