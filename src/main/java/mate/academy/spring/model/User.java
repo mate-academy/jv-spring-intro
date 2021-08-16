@@ -1,11 +1,20 @@
 package mate.academy.spring.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.Arrays;
 import java.util.Objects;
 
+@Entity
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String password;
+    private byte[] salt;
 
     public Long getId() {
         return id;
@@ -31,6 +40,14 @@ public class User {
         this.password = password;
     }
 
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -42,11 +59,22 @@ public class User {
         User user = (User) o;
         return Objects.equals(id, user.id)
                 && Objects.equals(email, user.email)
-                && Objects.equals(password, user.password);
+                && Objects.equals(password, user.password)
+                && Arrays.equals(salt, user.salt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password);
+        int result = Objects.hash(id, email, password);
+        result = 31 * result + Arrays.hashCode(salt);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{"
+                + "id=" + id
+                + ", email='" + email + '\''
+                + '}';
     }
 }
