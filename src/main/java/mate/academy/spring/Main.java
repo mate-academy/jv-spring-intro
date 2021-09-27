@@ -12,7 +12,7 @@ public class Main {
         user1.setSurname("Yukhno");
         User user2 = new User();
         user2.setName("Bob");
-        user2.setSurname("Petrov");
+        user2.setSurname("Ivanov");
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = context.getBean(UserService.class);
