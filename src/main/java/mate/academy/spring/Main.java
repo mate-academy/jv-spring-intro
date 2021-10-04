@@ -21,6 +21,6 @@ public class Main {
         userService.add(bob);
         userService.add(alice);
         List<User> allUsersFromDb = userService.getAll();
-        allUsersFromDb.forEach(System.out::println);
+        System.out.println(allUsersFromDb);
     }
 }
