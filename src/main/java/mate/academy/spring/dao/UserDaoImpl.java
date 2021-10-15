@@ -29,15 +29,21 @@ public class UserDaoImpl implements UserDao {
             transaction.commit();
             return;
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             throw new RuntimeException("can't add user: " + user);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     @Override
     public List<User> getAll() {
-        String allUsers = "FROM User";
         try (Session session = sessionFactory.openSession()) {
-            Query<User> query = session.createQuery(allUsers, User.class);
+            Query<User> query = session.createQuery("FROM User", User.class);
             return query.getResultList();
         } catch (Exception e) {
             throw new RuntimeException("Can't get all users.", e);
