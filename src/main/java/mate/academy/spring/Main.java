@@ -8,13 +8,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
         User jaina = new User();
-        jaina.setName("Jaina");
-        jaina.setUsername("Proudmoore");
+        jaina.setFirstName("Jaina");
+        jaina.setLastName("Proudmoore");
         jaina.setEmail("email@newone.com");
 
         User arthas = new User();
-        arthas.setName("Arthas");
-        arthas.setUsername("Menetil");
+        arthas.setFirstName("Arthas");
+        arthas.setLastName("Menetil");
         arthas.setEmail("lichKing@prince.com");
 
         AnnotationConfigApplicationContext context =
