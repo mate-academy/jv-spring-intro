@@ -10,7 +10,7 @@ public class Main {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
         UserService bean = context.getBean(UserService.class);
-        bean.add(new User("Petro", "Petrenko"));
+        bean.add(new User("Petro", "Petr"));
         bean.getAll().forEach(System.out::println);
 
     }
