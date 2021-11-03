@@ -18,6 +18,6 @@ public class Main {
 
         userService.add(bob);
         userService.add(alice);
-        System.out.println(userService.getAll());
+        userService.getAll().forEach(System.out::println);
     }
 }
