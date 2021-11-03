@@ -2,16 +2,21 @@ package mate.academy.spring.dao;
 
 import java.util.List;
 import mate.academy.spring.model.User;
-import mate.academy.spring.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-    private static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private final SessionFactory sessionFactory;
+
+    @Autowired
+    public UserDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public void add(User user) {
@@ -37,8 +42,10 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getAll() {
         try (Session session = sessionFactory.openSession()) {
-            Query<User> query = session.createQuery("FROM User u ", User.class);
+            Query<User> query = session.createQuery("FROM User", User.class);
             return query.getResultList();
+        }  catch (Exception e) {
+            throw new RuntimeException("Can't get all Users from DB");
         }
     }
 }
