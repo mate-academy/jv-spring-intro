@@ -9,12 +9,10 @@ public class Main {
     public static void main(String[] args) {
         User user = new User();
         user.setName("UserName");
-
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = context.getBean(UserService.class);
         userService.add(user);
         System.out.println(userService.getAll());
-
     }
 }
