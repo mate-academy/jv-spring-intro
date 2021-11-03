@@ -11,9 +11,9 @@ public class Main {
                 new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = context.getBean(UserService.class);
 
-        User bob = new User();
+        User bob = context.getBean(User.class);
         bob.setName("Bob");
-        User alice = new User();
+        User alice = context.getBean(User.class);
         alice.setName("Alice");
 
         userService.add(bob);
