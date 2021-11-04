@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         UserService userService = context.getBean(UserService.class);
         User user = new User();
-        user.setEmail("test@ukr.net");
+        user.setEmail("test@ukr.nett");
         user.setPassword("test");
         userService.add(user);
         userService.getAll().forEach(System.out::println);
