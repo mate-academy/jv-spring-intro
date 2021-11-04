@@ -5,9 +5,11 @@ import mate.academy.spring.model.User;
 import mate.academy.spring.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Primary
 public class UserDaoImpl implements UserDao {
     @Override
     public void add(User user) {
