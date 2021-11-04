@@ -20,7 +20,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User save(User user) {
+    public void save(User user) {
         Session session = null;
         Transaction transaction = null;
         try {
@@ -28,7 +28,6 @@ public class UserDaoImpl implements UserDao {
             transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
-            return user;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
