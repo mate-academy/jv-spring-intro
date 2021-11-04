@@ -1,7 +1,9 @@
 # Spring Framework intro
 
 -add spring context dependency;
--crate app config class and give anotation to it;
+-crate app config class and give @Configuration annotation to it;
+-use service, repository autowired annotations
+-create aplicationConfigAnnotationContext in main
 
 - Implement UserService and UserDao
   
