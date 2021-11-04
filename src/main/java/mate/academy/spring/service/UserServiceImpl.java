@@ -4,15 +4,16 @@ import java.util.List;
 import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private final UserDao someUserDao;
 
     @Autowired
-    @Qualifier("testUserDaoImpl")
-    private UserDao someUserDao;
+    public UserServiceImpl(UserDao someUserDao) {
+        this.someUserDao = someUserDao;
+    }
 
     @Override
     public void add(User user) {

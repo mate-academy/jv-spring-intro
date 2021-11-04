@@ -2,21 +2,27 @@ package mate.academy.spring.dao;
 
 import java.util.List;
 import mate.academy.spring.model.User;
-import mate.academy.spring.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.context.annotation.Primary;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Primary
 public class UserDaoImpl implements UserDao {
+    private final SessionFactory sessionFactory;
+
+    @Autowired
+    public UserDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public void add(User user) {
         Session session = null;
         Transaction transaction = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             transaction.commit();
             session.save(user);
@@ -34,8 +40,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getAll() {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-           return session.createQuery("from User", User.class)
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("from User", User.class)
                     .getResultList();
         }
     }
