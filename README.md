@@ -1,5 +1,8 @@
 # Spring Framework intro
 
+-add spring context dependency;
+-crate app config class and give anotation to it;
+
 - Implement UserService and UserDao
   
     ```java
