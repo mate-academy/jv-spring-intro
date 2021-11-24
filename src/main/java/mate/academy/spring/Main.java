@@ -11,20 +11,20 @@ public class Main {
                 new AnnotationConfigApplicationContext(AppConfig.class);
         UserService beanUserService = context.getBean(UserService.class);
 
-        User user1 = new User();
-        user1.setName("Bob");
-        user1.setAge(22L);
-        beanUserService.add(user1);
+        User userBob = new User();
+        userBob.setName("Bob");
+        userBob.setAge(22L);
+        beanUserService.add(userBob);
 
-        User user2 = new User();
-        user2.setName("Alice");
-        user2.setAge(16L);
-        beanUserService.add(user2);
+        User userAlice = new User();
+        userAlice.setName("Alice");
+        userAlice.setAge(16L);
+        beanUserService.add(userAlice);
 
-        User user3 = new User();
-        user3.setName("John");
-        user3.setAge(43L);
-        beanUserService.add(user3);
+        User userJohn = new User();
+        userJohn.setName("John");
+        userJohn.setAge(43L);
+        beanUserService.add(userJohn);
 
         System.out.println(beanUserService.getAll());
 
