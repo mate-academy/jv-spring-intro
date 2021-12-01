@@ -1,8 +1,7 @@
 package mate.academy.spring.dao;
 
-import mate.academy.spring.model.User;
-
 import java.util.List;
+import mate.academy.spring.model.User;
 
 public interface UserDao {
     void save(User user);
