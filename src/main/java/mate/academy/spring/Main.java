@@ -1,6 +1,7 @@
 package mate.academy.spring;
 
 import mate.academy.spring.config.AppConfig;
+import mate.academy.spring.exception.UserNotSavedException;
 import mate.academy.spring.model.User;
 import mate.academy.spring.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -13,8 +14,12 @@ public class Main {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
         UserService service = context.getBean(UserService.class);
-        service.add(user1);
-        service.add(user2);
+        try {
+            service.add(user1);
+            service.add(user2);
+        } catch (UserNotSavedException e) {
+            e.printStackTrace();
+        }
         service.getAll().forEach(u -> System.out.println(u.toString()));
     }
 }
