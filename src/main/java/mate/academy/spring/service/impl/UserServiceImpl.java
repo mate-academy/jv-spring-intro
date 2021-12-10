@@ -2,7 +2,6 @@ package mate.academy.spring.service.impl;
 
 import java.util.List;
 import mate.academy.spring.dao.UserDao;
-import mate.academy.spring.exception.UserNotSavedException;
 import mate.academy.spring.model.User;
 import mate.academy.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User add(User user) throws UserNotSavedException {
+    public User add(User user) {
         return userDao.save(user);
     }
 

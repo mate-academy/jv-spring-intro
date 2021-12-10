@@ -2,7 +2,7 @@ package mate.academy.spring.dao.impl;
 
 import java.util.List;
 import mate.academy.spring.dao.UserDao;
-import mate.academy.spring.exception.UserNotSavedException;
+import mate.academy.spring.exception.DataProcessingException;
 import mate.academy.spring.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User save(User user) throws UserNotSavedException {
+    public User save(User user) {
         Transaction transaction = null;
         Session session = null;
         try {
@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new UserNotSavedException("Can't save user to DB", e);
+            throw new DataProcessingException("Can't save user to DB", e);
         } finally {
             if (session != null) {
                 session.close();
