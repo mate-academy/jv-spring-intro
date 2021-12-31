@@ -15,8 +15,12 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "mate.academy.spring")
 public class AppConfig {
+    private final Environment enviroment;
+
     @Autowired
-    private Environment enviroment;
+    public AppConfig(Environment enviroment) {
+        this.enviroment = enviroment;
+    }
 
     @Bean
     public DataSource getDataSource() {
@@ -33,7 +37,7 @@ public class AppConfig {
         LocalSessionFactoryBean localSession = new LocalSessionFactoryBean();
         localSession.setDataSource(getDataSource());
         Properties properties = new Properties();
-        properties.put("show_sql", enviroment.getProperty("hibernate.show_sql"));
+        properties.put("hibernate.show_sql", enviroment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", enviroment.getProperty("hibernate.hbm2ddl.auto"));
         localSession.setHibernateProperties(properties);
         localSession.setPackagesToScan("mate.academy.spring.model");
