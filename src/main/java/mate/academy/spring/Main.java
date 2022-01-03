@@ -13,6 +13,5 @@ public class Main {
         userService.add(new User("John", "qwerty"));
         userService.add(new User("Alice", "12345"));
         System.out.println(userService.getAll());
-
     }
 }
