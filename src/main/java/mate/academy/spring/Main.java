@@ -8,6 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     private static final AnnotationConfigApplicationContext applicationContext =
             new AnnotationConfigApplicationContext(AppConfig.class);
+
     public static void main(String[] args) {
         UserService userService = applicationContext.getBean(UserService.class);
         userService.add(new User("username", "awesome password"));
