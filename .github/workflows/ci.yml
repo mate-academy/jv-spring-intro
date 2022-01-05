@@ -24,4 +24,4 @@ jobs:
       - uses: AlexRozv/auto-reject-action@v2
         if: ${{ failure() }}
         with:
-          comment-body: "The job ran failed please fix it."
+          github-token: ${{ secrets.GITHUB_TOKEN }}
