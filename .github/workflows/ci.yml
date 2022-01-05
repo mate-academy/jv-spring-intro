@@ -16,3 +16,9 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
+      - uses: ntsd/auto-request-changes-action@v2
+        if: ${{ github.event.pull_request && failure() }}
+      - uses: hmarr/auto-approve-action@v2
+        if: ${{ github.event.pull_request && success() }}
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
