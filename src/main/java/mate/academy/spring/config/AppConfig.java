@@ -15,8 +15,12 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "mate.academy.spring")
 public class AppConfig {
+    private final Environment environment;
+
     @Autowired
-    private Environment environment;
+    public AppConfig(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     public DataSource getDataSource() {
@@ -36,7 +40,7 @@ public class AppConfig {
         properties.put("hibernate.hbm2ddl.auto",
                 environment.getProperty("hibernate.hbm2ddl.auto"));
         localSessionFactoryBean.setHibernateProperties(properties);
-        localSessionFactoryBean.setPackagesToScan("mate.academy.spring");
+        localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
         return localSessionFactoryBean;
     }
 }
