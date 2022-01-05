@@ -1,6 +1,6 @@
 name: Java CI
 
-on: pull_request
+on: [push, pull_request]
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
       - uses: hmarr/auto-approve-action@v2
         if: ${{ success() }}
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
       - uses: AlexRozv/auto-request-changes-action@v2
         if: ${{ failure() }}
         with:
