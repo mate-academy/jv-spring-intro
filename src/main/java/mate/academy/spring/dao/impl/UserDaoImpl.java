@@ -7,7 +7,6 @@ import mate.academy.spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -44,8 +43,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getAll() {
         try (Session session = sessionFactory.openSession()) {
-            Query query = session.createQuery("from User", User.class);
-            return query.getResultList();
+            return session.createQuery("from User", User.class).getResultList();
         } catch (Exception e) {
             throw new DataProcessingException("Can't get all users from db", e);
         }
