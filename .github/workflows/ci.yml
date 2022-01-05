@@ -20,7 +20,7 @@ jobs:
         if: ${{ success() }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: ntsd/auto-request-changes-action@v2
+      - uses: AlexRozv/auto-request-changes-action@v2
         if: ${{ github.event.pull_request && failure() }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
