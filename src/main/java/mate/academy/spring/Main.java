@@ -7,14 +7,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
     public static void main(String[] args) {
-        User user = new User("Qwe","Rty");
-        User user1 = new User("Asd","Fgh");
 
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
+        User qwe = new User("Qwe","Rty");
+        User asd = new User("Asd","Fgh");
         UserService userService = context.getBean(UserService.class);
-        userService.add(user);
-        userService.add(user1);
+        userService.add(qwe);
+        userService.add(asd);
         System.out.println(userService.getAll());
     }
 }
