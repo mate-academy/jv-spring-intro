@@ -17,6 +17,6 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
       - uses: hmarr/auto-approve-action@v2
-        if: ${{ github.event.pull_request && success() }}
+        if: ${{ success() }}
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
