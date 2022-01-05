@@ -21,7 +21,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ github.event.issue.number }}!
-      - uses: AlexRozv/auto-request-changes-action@v2
+      - uses: AlexRozv/auto-reject-action@v2
         if: ${{ failure() }}
         with:
           comment-body: "The job ran failed please fix it."
