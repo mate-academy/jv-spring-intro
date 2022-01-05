@@ -21,6 +21,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: AlexRozv/auto-request-changes-action@v2
-        if: ${{ github.event.pull_request && failure() }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ failure() }}
+        env:
+          github-token: ${{ github.token }}
