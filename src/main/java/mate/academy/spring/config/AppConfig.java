@@ -13,10 +13,14 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @Configuration
 @PropertySource("classpath:application.properties")
-@ComponentScan(basePackages = "mate.academy.spring")
+@ComponentScan(basePackages = "mate.academy.spring.model")
 public class AppConfig {
-    @Autowired
     private Environment environment;
+
+    @Autowired
+    public AppConfig(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     public DataSource getDataSource() {
