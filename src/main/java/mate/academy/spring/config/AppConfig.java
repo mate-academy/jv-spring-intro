@@ -1,7 +1,7 @@
 package mate.academy.spring.config;
 
-import javax.sql.DataSource;
 import java.util.Properties;
+import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @Configuration
 @PropertySource("classpath:application.properties")
-@ComponentScan(basePackages ="mate.academy.spring")
+@ComponentScan(basePackages = "mate.academy.spring")
 public class AppConfig {
     private Environment environment;
 
