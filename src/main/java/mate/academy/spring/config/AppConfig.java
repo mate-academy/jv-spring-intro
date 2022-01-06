@@ -39,7 +39,6 @@ public class AppConfig {
                 environment.getProperty("hibernate.hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         localSessionFactoryBean.setHibernateProperties(properties);
-
         localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
 
         return localSessionFactoryBean;
