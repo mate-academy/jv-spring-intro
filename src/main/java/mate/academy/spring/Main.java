@@ -1,7 +1,6 @@
 package mate.academy.spring;
 
 import mate.academy.spring.config.AppConfig;
-import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.model.User;
 import mate.academy.spring.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
