@@ -6,9 +6,10 @@ import mate.academy.spring.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
+    private static final AnnotationConfigApplicationContext context =
+            new AnnotationConfigApplicationContext(AppConfig.class);
+
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(AppConfig.class);
         User firstUser = new User("Alice","Black");
         User secondUser = new User("Bob","Grey");
         UserService userService = context.getBean(UserService.class);
