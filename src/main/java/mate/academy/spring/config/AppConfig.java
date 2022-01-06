@@ -1,7 +1,7 @@
 package mate.academy.spring.config;
 
-import javax.sql.DataSource;
 import java.util.Properties;
+import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +19,7 @@ public class AppConfig {
     private Environment environment;
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(environment.getProperty("db.driver"));
         dataSource.setUrl(environment.getProperty("db.url"));
@@ -35,7 +35,8 @@ public class AppConfig {
 
         Properties properties = new Properties();
         properties.put("show_sql", environment.getProperty("hibernate.show_sql"));
-        properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.hbm2ddl.auto",
+                environment.getProperty("hibernate.hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         localSessionFactoryBean.setHibernateProperties(properties);
 
