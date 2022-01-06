@@ -1,5 +1,6 @@
 package mate.academy.spring.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class User {
     private Long id;
     private String name;
     private int age;
+    @Column(name = "is_cool")
     private boolean isCool;
 
     public User() {
