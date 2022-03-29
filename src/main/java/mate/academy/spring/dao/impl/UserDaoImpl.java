@@ -51,5 +51,4 @@ public class UserDaoImpl implements UserDao {
             throw new DataProcessingException("Can't get all user ", e);
         }
     }
-
 }

@@ -32,16 +32,11 @@ public class AppConfig {
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(getDataSource());
-
         Properties properties = new Properties();
         properties.put("show-sql", environment.getProperty("hibernate.show_sql"));
         properties.put("hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         localSessionFactoryBean.setHibernateProperties(properties);
-
         localSessionFactoryBean.setPackagesToScan("mate.academy.spring");
-
         return localSessionFactoryBean;
-
     }
-
 }
