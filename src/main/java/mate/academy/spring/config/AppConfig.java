@@ -15,7 +15,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "mate.academy.spring")
 public class AppConfig {
-    private static final String MODELS_LIB = "mate.academy.spring.models";
+    private static final String MODELS_LIB = "mate.academy.spring.model";
     @Autowired
     private Environment environment;
 
