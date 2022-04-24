@@ -1,5 +1,7 @@
 package mate.academy.spring.config;
 
+import java.util.Properties;
+import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,15 +11,13 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
-import javax.sql.DataSource;
-import java.util.Properties;
-
 @Configuration
 @ComponentScan(basePackages = "mate.academy.spring")
 @PropertySource("classpath:application.properties")
 public class AppConfig {
     @Autowired
     private Environment environment;
+
     @Bean
     public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
@@ -25,12 +25,6 @@ public class AppConfig {
         dataSource.setUrl(environment.getProperty("db.url"));
         dataSource.setUsername(environment.getProperty("db.user"));
         dataSource.setPassword(environment.getProperty("db.password"));
-/*
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/ticket_app");
-        dataSource.setUsername("root");
-        dataSource.setPassword("root");
-*/
         return dataSource;
     }
 
