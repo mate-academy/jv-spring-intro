@@ -12,8 +12,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @Configuration
-@PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "mate.academy.spring")
+@PropertySource("classpath:application.properties")
 public class AppConfig {
     @Autowired
     private Environment environment;
@@ -23,7 +23,7 @@ public class AppConfig {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(environment.getProperty("db.driver"));
         dataSource.setUrl(environment.getProperty("db.url"));
-        dataSource.setUsername(environment.getProperty("db.username"));
+        dataSource.setUsername(environment.getProperty("db.user"));
         dataSource.setPassword(environment.getProperty("db.password"));
         return dataSource;
     }
@@ -32,14 +32,13 @@ public class AppConfig {
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(getDataSource());
-
         Properties properties = new Properties();
         properties.put("show_sql", environment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto",
-                environment.getProperty("hibernate.hbm2_ddl.auto"));
+                environment.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         localSessionFactoryBean.setHibernateProperties(properties);
-
-        localSessionFactoryBean.setPackagesToScan("mate.academy.spring");
+        localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
         return localSessionFactoryBean;
     }
 }
