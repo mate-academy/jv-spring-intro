@@ -16,7 +16,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "mate.academy.spring")
 public class AppConfig {
-    private Environment environment;
+    private final Environment environment;
 
     @Autowired
     public AppConfig(Environment environment) {
@@ -41,8 +41,7 @@ public class AppConfig {
         properties.put("show_sql", environment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         localSessionFactoryBean.setHibernateProperties(properties);
-        localSessionFactoryBean.setPackagesToScan("mate.academy.model");
-        localSessionFactoryBean.setAnnotatedClasses(new Class[] { User.class });
+        localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
         return localSessionFactoryBean;
     }
 }
