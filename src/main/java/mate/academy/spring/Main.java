@@ -17,6 +17,7 @@ public class Main {
 
         AnnotationConfigApplicationContext context
                 = new AnnotationConfigApplicationContext(AppConfig.class);
+        context.registerShutdownHook();
         UserService userService = context.getBean(UserService.class);
 
         userService.add(bob);
