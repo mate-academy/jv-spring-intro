@@ -20,14 +20,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = TestAppConfig.class)
 @TestPropertySource(locations="classpath:application.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class UserDaoTest {
-  private static UserDao userDao;
+public class UserDaoImplTest {
+  private static UserDaoImpl userDaoImpl;
 
   @BeforeClass
   public static void setUp() {
     AnnotationConfigApplicationContext context =
         new AnnotationConfigApplicationContext(TestAppConfig.class);
-    userDao = context.getBean(UserDao.class);
+    userDaoImpl = context.getBean(UserDaoImpl.class);
   }
 
   @Test
@@ -42,7 +42,7 @@ public class UserDaoTest {
   @Test
   public void getAll_NoUsers_Ok() {
     List<User> expected = Collections.emptyList();
-    List<User> actual = userDao.getAll();
+    List<User> actual = userDaoImpl.getAll();
     assertEquals(expected, actual);
   }
 
@@ -51,7 +51,7 @@ public class UserDaoTest {
     User john = createUser("John", 18);
     User ann = createUser("Ann", 20);
     List<User> expected = List.of(john, ann);
-    List<User> actual = userDao.getAll();
+    List<User> actual = userDaoImpl.getAll();
     assertEquals(expected, actual);
   }
 
@@ -59,6 +59,6 @@ public class UserDaoTest {
     User user = new User();
     user.setName(name);
     user.setAge(age);
-    return userDao.add(user);
+    return userDaoImpl.add(user);
   }
 }
