@@ -25,15 +25,15 @@ public class AppConfig {
     @Bean
     public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(environment.getProperty("driver_class"));
-        dataSource.setUrl(environment.getProperty("url"));
-        dataSource.setUsername(environment.getProperty("username"));
-        dataSource.setPassword(environment.getProperty("password"));
+        dataSource.setDriverClassName(environment.getProperty("db.driver_class"));
+        dataSource.setUrl(environment.getProperty("db.url"));
+        dataSource.setUsername(environment.getProperty("db.username"));
+        dataSource.setPassword(environment.getProperty("db.password"));
         return dataSource;
     }
 
     @Bean
-    public LocalSessionFactoryBean getSessionFactoryBean() {
+    public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(getDataSource());
 
@@ -43,7 +43,7 @@ public class AppConfig {
         properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         localSessionFactoryBean.setHibernateProperties(properties);
 
-        localSessionFactoryBean.setPackagesToScan("mate.academy.spring");
+        localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
         return localSessionFactoryBean;
     }
 }
