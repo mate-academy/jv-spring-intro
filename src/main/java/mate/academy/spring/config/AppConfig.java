@@ -35,11 +35,13 @@ public class AppConfig {
 
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
-        properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.hbm2ddl.auto",
+                environment.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.dialect",
+                environment.getProperty("hibernate.dialect"));
+
         localSessionFactoryBean.setHibernateProperties(properties);
-
         localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
-
         return localSessionFactoryBean;
     }
 }
