@@ -1,7 +1,6 @@
 package mate.academy.spring.dao.impl;
 
 import java.util.List;
-import javax.sql.DataSource;
 import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.exception.DataProcessingException;
 import mate.academy.spring.model.User;
