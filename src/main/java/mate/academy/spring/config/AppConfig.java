@@ -18,7 +18,6 @@ public class AppConfig {
     @Autowired
     private Environment environment;
 
-
     @Bean
     public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
