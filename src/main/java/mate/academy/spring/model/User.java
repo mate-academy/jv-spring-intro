@@ -1,11 +1,11 @@
 package mate.academy.spring.model;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -16,7 +16,9 @@ public class User {
     private String name;
     private int age;
 
-    public User() {}
+    public User() {
+
+    }
 
     public Long getId() {
         return id;
