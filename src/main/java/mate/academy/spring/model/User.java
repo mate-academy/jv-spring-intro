@@ -1,8 +1,17 @@
 package mate.academy.spring.model;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer age;
@@ -33,8 +42,12 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
         return Objects.equals(name, user.name) && Objects.equals(age, user.age);
     }
@@ -42,5 +55,14 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(name, age);
+    }
+
+    @Override
+    public String toString() {
+        return "User{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", age=" + age
+                + '}';
     }
 }
