@@ -10,7 +10,8 @@ public class Main {
         User bob = new User();
         bob.setAge(23);
         bob.setName("Bob");
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(AppConfig.class);
         UserService service = context.getBean(UserService.class);
         System.out.println(service.add(bob));
         System.out.println(service.getAll());
