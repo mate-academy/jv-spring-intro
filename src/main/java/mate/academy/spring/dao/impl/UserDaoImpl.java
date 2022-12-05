@@ -1,7 +1,7 @@
 package mate.academy.spring.dao.impl;
 
-import jakarta.persistence.criteria.CriteriaQuery;
 import java.util.List;
+import javax.persistence.criteria.CriteriaQuery;
 import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.exception.DataProcessingException;
 import mate.academy.spring.model.User;
