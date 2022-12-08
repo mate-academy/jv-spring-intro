@@ -1,11 +1,11 @@
 package mate.academy.spring.dao;
 
-import jakarta.persistence.criteria.CriteriaQuery;
 import java.util.List;
 import mate.academy.spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -40,13 +40,16 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getAll() {
-        try (Session session = sessionFactory.openSession()) {
-            CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder()
-                    .createQuery(User.class);
-            criteriaQuery.from(User.class);
-            return session.createQuery(criteriaQuery).getResultList();
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Query<User> allUsersFromDb = session.createQuery("from User", User.class);
+            return allUsersFromDb.getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can't get all users", e);
+            throw new RuntimeException("Cant get all Users from DB" + e);
+        } finally {
+            assert session != null;
+            session.close();
         }
     }
 }
