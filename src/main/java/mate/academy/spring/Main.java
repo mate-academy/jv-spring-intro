@@ -17,8 +17,8 @@ public class Main {
         stepan.setName("Stepan");
 
         final User oksana = new User();
-        stepan.setAge(31);
-        stepan.setName("Oksana");
+        oksana.setAge(31);
+        oksana.setName("Oksana");
 
         userService.add(stepan);
         userService.add(oksana);
