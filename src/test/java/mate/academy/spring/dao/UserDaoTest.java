@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Collections;
 import java.util.List;
+
+import mate.academy.spring.Dao.UserDao;
 import mate.academy.spring.config.TestAppConfig;
 import mate.academy.spring.model.User;
 import org.junit.BeforeClass;
