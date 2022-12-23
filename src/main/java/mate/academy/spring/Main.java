@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
-
         UserService userService = context.getBean(UserService.class);
 
         User alice = new User();
@@ -22,6 +21,6 @@ public class Main {
         bob.setAge(19);
         userService.add(bob);
 
-        System.out.println(userService.getAll());
+        userService.getAll().forEach(System.out::println);
     }
 }

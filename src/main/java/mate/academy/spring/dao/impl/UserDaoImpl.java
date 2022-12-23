@@ -1,9 +1,10 @@
 package mate.academy.spring.dao.impl;
 
-import jakarta.persistence.criteria.CriteriaQuery;
 import java.util.List;
+import javax.persistence.criteria.CriteriaQuery;
 import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.model.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -26,14 +27,14 @@ public class UserDaoImpl implements UserDao {
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            session.persist(user);
+            session.save(user);
             transaction.commit();
             return user;
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't add the user " + user);
+            throw new RuntimeException("Can't add user to db" + user, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -44,12 +45,12 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getAll() {
         try (Session session = sessionFactory.openSession()) {
-            CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder()
-                    .createQuery(User.class);
-            criteriaQuery.from(User.class);
-            return session.createQuery(criteriaQuery).getResultList();
+            CriteriaQuery<User> userCriteriaQuery =
+                    session.getCriteriaBuilder().createQuery(User.class);
+            userCriteriaQuery.from(User.class);
+            return session.createQuery(userCriteriaQuery).getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can't get all users", e);
+            throw new RuntimeException("Can't get list of users ", e);
         }
     }
 }
