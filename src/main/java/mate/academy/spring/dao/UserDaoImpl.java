@@ -1,7 +1,7 @@
 package mate.academy.spring.dao;
 
 import java.util.List;
-import javax.persistence.criteria.CriteriaQuery;;
+import javax.persistence.criteria.CriteriaQuery;
 import mate.academy.spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,6 +17,7 @@ public class UserDaoImpl implements UserDao {
     public UserDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+
     @Override
     public User add(User user) {
         Session session = null;
