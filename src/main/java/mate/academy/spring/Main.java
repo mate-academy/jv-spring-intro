@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         User bob = new User();
         bob.setAge(18);
-        bob.setName("Bob");
+        bob.setName("Bobi");
         User max = new User();
         max.setAge(22);
         max.setName("Max");
