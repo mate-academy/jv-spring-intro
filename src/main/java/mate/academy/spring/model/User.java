@@ -45,11 +45,16 @@ public class User {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof User user)) {
+        if (!(o instanceof User)) {
             return false;
         }
 
+        User user = (User) o;
+
         if (age != user.age) {
+            return false;
+        }
+        if (!Objects.equals(id, user.id)) {
             return false;
         }
         return Objects.equals(name, user.name);
@@ -57,7 +62,8 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = age;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + age;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
