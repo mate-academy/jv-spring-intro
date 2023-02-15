@@ -1,8 +1,7 @@
 package mate.academy.spring.dao.impl;
 
-import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
-
+import javax.persistence.criteria.CriteriaQuery;
 import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.model.User;
 import org.hibernate.Session;
@@ -40,7 +39,8 @@ public class UserDaoImpl implements UserDao {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder().createQuery(User.class);
+            CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder()
+                    .createQuery(User.class);
             criteriaQuery.from(User.class);
             return session.createQuery(criteriaQuery).getResultList();
         } catch (Exception e) {
