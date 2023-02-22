@@ -13,11 +13,12 @@ public class Main {
         User first = new User();
         first.setName("johny");
         first.setAge(22);
+        System.out.println(userService.add(first));
         User second = new User();
         second.setName("rony");
         second.setAge(31);
-        System.out.println(userService.add(first));
         System.out.println(userService.add(second));
+
         System.out.println(userService.getAll());
     }
 }
