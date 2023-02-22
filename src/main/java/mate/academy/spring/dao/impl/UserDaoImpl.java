@@ -44,7 +44,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getAll() {
         try (Session session = sessionFactory.openSession()) {
-            Query<User> getAllUsersQuery = session.createQuery("FROM User ", User.class);
+            Query<User> getAllUsersQuery = session.createQuery("FROM User",User.class);
             return getAllUsersQuery.getResultList();
         } catch (Exception e) {
             throw new RuntimeException("Can't get all user from DB.", e);

@@ -8,15 +8,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
 
-        User bob = new User();
-        bob.setName("vov");
-        bob.setAge(19);
-
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = context.getBean(UserService.class);
 
-        userService.add(bob);
-
+        User user = new User("vov", 21);
+        userService.add(user);
         System.out.println(userService.getAll());
     }
 }

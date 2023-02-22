@@ -9,9 +9,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private UserDao userDao;
 
     @Autowired
-    private UserDao userDao;
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     @Override
     public User add(User user) {
         return userDao.add(user);
