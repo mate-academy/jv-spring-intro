@@ -16,13 +16,6 @@ public class User {
     private String name;
     private int age;
 
-    public User() {}
-
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
     public Long getId() {
         return id;
     }
@@ -48,24 +41,28 @@ public class User {
     }
 
     @Override
+    public String toString() {
+        return "User{"
+                + " id=" + id
+                + ", name='" + name + '\''
+                + ", age=" + age
+                + '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
-        return age == user.age && Objects.equals(id, user.id) && Objects.equals(name, user.name);
+        return age == user.age && id.equals(user.id) && name.equals(user.name);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, name, age);
-    }
-
-    @Override
-    public String toString() {
-        return "User{"
-                + "id=" + id
-                + ", name='" + name + '\''
-                + ", age=" + age
-                + '}';
     }
 }

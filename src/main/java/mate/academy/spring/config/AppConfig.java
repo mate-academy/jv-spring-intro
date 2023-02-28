@@ -14,7 +14,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @Configuration
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "mate.academy.spring")
-public class AppConfig  {
+public class AppConfig {
     @Autowired
     private Environment environment;
 
@@ -29,14 +29,16 @@ public class AppConfig  {
     }
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-        factoryBean.setDataSource(getDataSource());
+    public LocalSessionFactoryBean getSessionFactory() {
+        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
+        localSessionFactoryBean.setDataSource(getDataSource());
+
         Properties properties = new Properties();
         properties.put("show_sql", environment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
-        factoryBean.setHibernateProperties(properties);
-        factoryBean.setPackagesToScan("mate.academy.spring.model");
-        return factoryBean;
+
+        localSessionFactoryBean.setHibernateProperties(properties);
+        localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
+        return localSessionFactoryBean;
     }
 }

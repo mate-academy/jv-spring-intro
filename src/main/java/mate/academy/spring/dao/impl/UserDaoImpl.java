@@ -20,19 +20,19 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User add(User user) {
-        Session session = null;
         Transaction transaction = null;
+        Session session = null;
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session.save(user);
-            session.close();
+            transaction.commit();
             return user;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't save user to DB" + user, e);
+            throw new RuntimeException("Can't insert user: " + user, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -42,10 +42,10 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getAll() {
-        try(Session session = sessionFactory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM User", User.class).getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can't find user", e);
+            throw new RuntimeException("Can't get all users", e);
         }
     }
 }

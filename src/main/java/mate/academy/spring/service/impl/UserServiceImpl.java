@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-
     private final UserDao userDao;
 
     @Autowired
@@ -19,11 +18,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User add(User user) {
-        return null;
+        return userDao.add(user);
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        return userDao.getAll();
     }
 }

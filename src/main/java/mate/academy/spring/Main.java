@@ -1,10 +1,8 @@
 package mate.academy.spring;
 
 import mate.academy.spring.config.AppConfig;
-import mate.academy.spring.dao.impl.UserDaoImpl;
 import mate.academy.spring.model.User;
 import mate.academy.spring.service.UserService;
-import mate.academy.spring.service.impl.UserServiceImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
@@ -12,11 +10,13 @@ public class Main {
 
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
+
+        User userAlice = new User();
+        userAlice.setName("Alice");
+        userAlice.setAge(21);
+
         UserService userService = context.getBean(UserService.class);
-
-        User user = new User("Max", 21);
-        userService.add(user);
-
+        userService.add(userAlice);
         System.out.println(userService.getAll());
     }
 }
