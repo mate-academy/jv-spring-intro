@@ -23,7 +23,6 @@ public class Main {
         mark.setName("Mark");
         mark.setAge(18);
         userService.add(mark);
-
         List<User> userList = userService.getAll();
         System.out.println(userList);
     }
