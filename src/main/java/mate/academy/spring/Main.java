@@ -7,7 +7,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        AnnotationConfigApplicationContext ctx
+                = new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = ctx.getBean(UserService.class);
         userService.add(new User());
         userService.getAll();
