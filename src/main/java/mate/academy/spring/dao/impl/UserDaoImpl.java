@@ -3,7 +3,9 @@ package mate.academy.spring.dao.impl;
 import java.util.List;
 import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.model.User;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserDaoImpl implements UserDao {
     @Override
     public User add(User user) {
