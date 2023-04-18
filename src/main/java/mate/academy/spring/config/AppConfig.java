@@ -17,7 +17,7 @@ public class AppConfig {
     private static final String PASSWORD = "mAt!E12345!6789mAtE!";
 
     @Bean
-    public DataSource getDaraSource() {
+    public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(DRIVER_NAME);
         dataSource.setUrl(URL);
@@ -29,9 +29,9 @@ public class AppConfig {
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
-        localSessionFactoryBean.setDataSource(getDaraSource());
+        localSessionFactoryBean.setDataSource(getDataSource());
         Properties properties = new Properties();
-        properties.put("show_sql", "true");
+        properties.put("show_sql", true);
         properties.put("hibernate.hbm2ddl.auto", "create-drop");
         localSessionFactoryBean.setHibernateProperties(properties);
         localSessionFactoryBean.setPackagesToScan("mate.academy.spring.model");
