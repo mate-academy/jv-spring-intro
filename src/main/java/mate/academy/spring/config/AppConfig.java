@@ -38,7 +38,7 @@ public class AppConfig {
         factoryBean.setDataSource(getDataSource());
         Properties properties = new Properties();
         properties.put("show_sql", environment.getProperty("hibernate.show_sql"));
-        properties.put("hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         factoryBean.setHibernateProperties(properties);
         factoryBean.setPackagesToScan("mate.academy.spring.model");
         return factoryBean;
