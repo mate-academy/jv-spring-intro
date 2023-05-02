@@ -13,6 +13,6 @@ public class Main {
 
         User user = new User(18, "Pit");
         userService.add(user);
-        userService.getAll();
+        System.out.println(userService.getAll());
     }
 }
