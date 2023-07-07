@@ -1,5 +1,6 @@
 package mate.academy.spring.dao.impl;
 
+import java.util.List;
 import mate.academy.spring.dao.UserDao;
 import mate.academy.spring.model.User;
 import org.hibernate.Session;
@@ -9,11 +10,10 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public class UserDaoImpl implements UserDao {
     private final SessionFactory sessionFactory;
+
     @Autowired
     public UserDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Couldn't inser user into db " + user, e);
+            throw new RuntimeException("Couldn't insert user into db " + user, e);
         } finally {
             if (session != null) {
                 session.close();
