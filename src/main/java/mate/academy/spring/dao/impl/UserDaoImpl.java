@@ -1,4 +1,4 @@
-package mate.academy.spring.dao.Impl;
+package mate.academy.spring.dao.impl;
 
 import java.util.List;
 import mate.academy.spring.dao.UserDao;

@@ -11,10 +11,10 @@ public class Main {
                 new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = context.getBean(UserService.class);
 
-        User Bob = new User(22, "Bob");
-        User Alice = new User(19, "Alice");
-        userService.add(Bob);
-        userService.add(Alice);
+        User bob = new User(22, "Bob");
+        User alice = new User(19, "Alice");
+        userService.add(bob);
+        userService.add(alice);
         System.out.println(userService.getAll());
     }
 }
