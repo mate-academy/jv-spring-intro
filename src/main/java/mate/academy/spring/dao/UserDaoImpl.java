@@ -1,6 +1,6 @@
 package mate.academy.spring.dao;
 
-import mate.academy.spring.exception.DataProcessingException;
+import java.util.List;
 import mate.academy.spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import javax.persistence.criteria.CriteriaQuery;
-import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -33,7 +32,7 @@ public class UserDaoImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataProcessingException("Can't insert user " + user, e);
+            throw new RuntimeException("Can't insert user " + user, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -49,7 +48,7 @@ public class UserDaoImpl implements UserDao {
             criteriaQuery.from(User.class);
             return session.createQuery(criteriaQuery).getResultList();
         } catch (Exception e) {
-            throw new DataProcessingException("Can't get all users", e);
+            throw new RuntimeException("Can't get all users", e);
         }
     }
 }
