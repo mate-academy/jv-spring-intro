@@ -14,11 +14,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public class UserDaoImpl implements UserDao {
-    @Autowired
-    @Qualifier("getSessionFactoryBean")
     private SessionFactory sessionFactory;
 
+    @Autowired
+    public UserDaoImpl(@Qualifier("getSessionFactoryBean") SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
+
     public User add(User user) {
         Session session = null;
         Transaction transaction = null;
