@@ -1,20 +1,21 @@
 package mate.academy.spring.dao;
 
 import java.util.List;
+import javax.persistence.criteria.CriteriaQuery;
 import mate.academy.spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import javax.persistence.criteria.CriteriaQuery;
 
 @Repository
 public class UserDaoImpl implements UserDao {
     private final SessionFactory sessionFactory;
 
     @Autowired
-    public UserDaoImpl(SessionFactory sessionFactory) {
+    public UserDaoImpl(@Qualifier("getSessionFactoryBean") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
