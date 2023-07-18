@@ -8,16 +8,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDaoImpl implements UserDao {
-    private SessionFactory sessionFactory;
 
+public class UserDaoImpl implements UserDao {
     @Autowired
-    public UserDaoImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    @Qualifier("getSessionFactoryBean")
+    private SessionFactory sessionFactory;
 
     @Override
     public User add(User user) {
