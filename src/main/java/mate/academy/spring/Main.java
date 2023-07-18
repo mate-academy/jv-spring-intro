@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         User mike = new User();
         mike.setAge(24);
-        mike.setName("Me");
+        mike.setName("esst");
         UserService userService = context.getBean(UserService.class);
         userService.add(mike);
         userService.getAll().forEach(System.out::println);
