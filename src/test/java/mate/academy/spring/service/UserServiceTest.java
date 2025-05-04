@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import mate.academy.spring.config.TestAppConfig;
 import mate.academy.spring.model.User;
+import mate.academy.spring.services.UserService;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
