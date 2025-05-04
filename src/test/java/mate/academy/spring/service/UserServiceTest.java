@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import mate.academy.spring.config.TestAppConfig;
 import mate.academy.spring.model.User;
+import mate.academy.spring.service.impl.UserServiceImpl;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,13 +21,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @TestPropertySource(locations="classpath:application.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class UserServiceTest {
-  private static UserService userService;
+  private static UserServiceImpl userService;
 
   @BeforeClass
   public static void setUp() {
     AnnotationConfigApplicationContext context =
         new AnnotationConfigApplicationContext(TestAppConfig.class);
-    userService = context.getBean(UserService.class);
+    userService = context.getBean(UserServiceImpl.class);
   }
 
   @Test
