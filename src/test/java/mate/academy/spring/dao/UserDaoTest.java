@@ -21,13 +21,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @TestPropertySource(locations="classpath:application.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class UserDaoTest {
-  private static UserDao userDao;
+  private static UserDaoImpl userDao;
 
   @BeforeClass
   public static void setUp() {
     AnnotationConfigApplicationContext context =
         new AnnotationConfigApplicationContext(TestAppConfig.class);
-    userDao = context.getBean(UserDao.class);
+    userDao = context.getBean(UserDaoImpl.class);
   }
 
   @Test
